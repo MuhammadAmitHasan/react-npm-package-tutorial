@@ -1,5 +1,18 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-declare const LoginComponent: React.FC;
+interface AuthContextProps {
+    username: string;
+    setUsername: React.Dispatch<React.SetStateAction<string>>;
+    logout: () => void;
+}
+declare const AuthProvider: React.FC<{
+    children: ReactNode;
+}>;
+declare const useAuth: () => AuthContextProps;
+declare const logout: () => () => void;
 
-export { LoginComponent as default };
+declare const Display: React.FC;
+
+declare const Login: React.FC;
+
+export { AuthProvider, Display, Login, logout, useAuth };

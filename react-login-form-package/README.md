@@ -21,18 +21,37 @@ yarn add react-login-form-package
 
 ## Usage Process
 
-1. Import the `LoginComponent` from `react-login-form-package`:
+1. Wrap the `app` with `AuthProvider`
 
    ```jsx
-   import LoginComponent from 'react-login-form-package';
+   import { AuthProvider } from 'react-login-form-package';
 
-   function App() {
+   <AuthProvider>
+     <App />
+   </AuthProvider>;
+   ```
+
+2. Import the and use components from `react-login-form-package`:
+
+   ```jsx
+   import React from 'react';
+   import { Login, Display, useAuth } from 'react-login-form-package';
+
+   const App: React.FC = () => {
+     const { username, logout } = useAuth();
      return (
        <div>
-         <LoginComponent />
+         {username ? (
+           <div>
+             <Display />
+             <button onClick={logout}>Logout</button>
+           </div>
+         ) : (
+           <Login />
+         )}
        </div>
      );
-   }
+   };
 
    export default App;
    ```

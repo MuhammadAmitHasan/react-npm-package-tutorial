@@ -19,13 +19,22 @@ This repository provides a step-by-step guide on creating and publishing a React
 
 ### 2. Prepare Your Component
 
-1. Copy the `src` folder from your React login component. Keep the final component file and linked files. `LoginContainer.tsx` is the main file in our project.
+1. Copy the `src` folder from your React login component. Keep the components and linked files that we want to publish.
 2. Delete all global files that are not linked with the component you want to publish.
-3. Create an `index.ts` file exporting your component `LoginContainer`:
+3. Create an `index.ts` file exporting your component and functions:
 
    ```typescript
-   import LoginComponent from './LoginComponent';
-   export default LoginComponent;
+   // index.ts
+
+   // Export the AuthProvider and useAuth hook
+   export { AuthProvider, useAuth } from './AuthContext';
+
+   // Export the components
+   export { default as Display } from './Display';
+   export { default as Login } from './Login';
+
+   // Export the logout function
+   export { logout } from './AuthContext';
    ```
 
 ### 3. Install Dependencies

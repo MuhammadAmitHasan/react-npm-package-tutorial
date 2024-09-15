@@ -1,11 +1,12 @@
+// Login.tsx
+
 import React, { useState } from 'react';
+import './App.css';
+import { useAuth } from './AuthContext';
 
-interface LoginProps {
-  onLogin: (username: string) => void;
-}
-
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
+const Login: React.FC = () => {
+  const { setUsername } = useAuth();
+  const [username, setUsernameLocal] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -16,7 +17,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       setError('Please fill all the fields.');
     } else {
       setError('');
-      onLogin(username);
+      setUsername(username);
     }
   };
 
@@ -27,23 +28,25 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         {error && <p className="error-message">{error}</p>}
         <div className="input-group">
           <label>Username:</label>
-          <input 
-            placeholder='Input your username'
-            type="text" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
+          <input
+            placeholder="Input your username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsernameLocal(e.target.value)}
           />
         </div>
         <div className="input-group">
           <label>Password:</label>
-          <input 
-            placeholder='Input your password'
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
+          <input
+            placeholder="Input your password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="login-btn">Login</button>
+        <button type="submit" className="login-btn">
+          Login
+        </button>
       </form>
     </div>
   );

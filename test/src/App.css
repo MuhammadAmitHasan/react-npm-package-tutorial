@@ -22,3 +22,15 @@ h1 {
 h4 {
   color: brown;
 }
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  color: white;
+  background-color: red;
+}
